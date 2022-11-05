@@ -1,0 +1,34 @@
+﻿@model  Proyecto_ASP_NET.ViewModels.RandomPeliculaViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*
+   ESTO SIRVE PARA COMENTARIOS 
+   EN LINEAS MULTIPLES XD!
+*@
+
+
+@{ 
+    // la siguiente asignacion se lee como  "si los clientes son mayores a 5 ENTONCES la pelicula DEBERIA ser popular y de OTRA MANERA no deberia de serlo... "
+    var classNombre = Model.Clientes.Count > 5 ? "popular" : null;
+}
+
+<h2 class="@classNombre">@Model.Pelicula.Nombre</h2>
+
+@if (Model.Clientes.Count == 0)
+{
+    <text> Nadie a rentado esta pelicula</text>
+}
+else
+{
+    <ul>
+        @foreach (var cliente in Model.Clientes)
+        {
+            <li>@cliente.Nombre</li>
+        }
+    </ul>
+}
+
